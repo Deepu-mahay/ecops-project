@@ -1,0 +1,20 @@
+<?php 
+$n=$_REQUEST['n'];
+$dob=$_REQUEST['dob'];
+$e=$_REQUEST['e'];
+$p=$_REQUEST['p'];
+$designation=$_REQUEST['designation'];
+$ps_name=$_REQUEST['ps_name'];
+$contact=$_REQUEST['contact'];
+$add=$_REQUEST['address'];
+//connect
+$con=mysqli_connect("localhost","root","","ecops");
+//query
+$q="insert into `cops-register`(`name`,`dob`,`email`,`password`,`designation`,`ps_name`,`contact`,`address`)value('$n','$dob','$e','$p','$designation','$ps_name','$contact','$add')";
+//combine
+$result=mysqli_query($con,$q);
+if($result>0)
+{
+    header("location:index.php");
+}
+?>

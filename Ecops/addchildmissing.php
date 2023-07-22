@@ -1,0 +1,21 @@
+<?php 
+$name=$_REQUEST['name'];
+$email=$_REQUEST['email'];
+$odate=$_REQUEST['odate'];
+$child_name=$_REQUEST['child_name'];
+$age=$_REQUEST['age'];
+$child_status='Pending';
+$upload=$_REQUEST['upload'];
+$pic=$_FILES['picture']['name'];
+$fnpic=$_FILES['picture']['tmp_name'];
+$location=$_REQUEST['location'];
+$criminal_status='Pending';
+$dateo=$_REQUEST['date'];
+$con=mysqli_connect("localhost","root","","ecops");
+$q="insert into `child_missing`(`name`,`email`,`dateo`,`child_name`,`age`,`child_status`,`upload`,`picture`,`location`,`criminal_status`,`date`)value('$name','$email','$odate','$child_name','$age','$child_status','$upload','$pic','$location','$criminal_status','$dateo')";
+$result=mysqli_query($con,$q);
+if($result>0){
+    move_uploaded_file($fnpic,"cops/upload/".$pic);
+    header("location:viewchildmissing.php");
+}
+?>
